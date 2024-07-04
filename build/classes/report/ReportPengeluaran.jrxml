@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="39eec6b8-81f7-4195-94d5-897455144b4c">
+	<property name="ireport.zoom" value="1.4641000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pengeluaran.`id` AS pengeluaran_id,
+     tambak.`nama` AS tambak_nama,
+     pengeluaran.`biaya_ikan` AS pengeluaran_biaya_ikan,
+     pengeluaran.`biaya_panen` AS pengeluaran_biaya_panen,
+     pengeluaran.`biaya_lain` AS pengeluaran_biaya_lain,
+     pengeluaran.`total_pengeluaran` AS pengeluaran_total_pengeluaran,
+     pengeluaran.`ket` AS pengeluaran_ket,
+     pengeluaran.`created_at` AS pengeluaran_created_at
+FROM
+     `tambak` tambak INNER JOIN `pengeluaran` pengeluaran ON tambak.`id` = pengeluaran.`tambak_id`
+]]>
+	</queryString>
+	<field name="tambak_nama" class="java.lang.String"/>
+	<field name="pengeluaran_biaya_ikan" class="java.lang.String"/>
+	<field name="pengeluaran_biaya_panen" class="java.lang.Integer"/>
+	<field name="pengeluaran_biaya_lain" class="java.lang.Integer"/>
+	<field name="pengeluaran_total_pengeluaran" class="java.lang.Integer"/>
+	<field name="pengeluaran_ket" class="java.lang.String"/>
+	<field name="pengeluaran_created_at" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="316" height="33" uuid="b662056b-5552-44f0-a545-6096d959dd08"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="20"/>
+				</textElement>
+				<text><![CDATA[PRINT OUT PENGELUARAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="46" width="55" height="22" uuid="aee79bcf-6de8-44c3-8b05-9a4e984dd9f2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Tambak :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="55" y="46" width="79" height="15" uuid="45ff5734-977c-45d4-8522-ed17c9a5cfae"/>
+				<textFieldExpression><![CDATA[$F{tambak_nama}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="254" y="0" width="301" height="70" uuid="c39265f8-5aac-494d-afde-4eefac46681b"/>
+				<imageExpression><![CDATA["D:\\KULIAH\\SMT 3-4\\PBO\\TA PBO\\UI\\doc head.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="1896b7f4-c923-4029-8712-bcbb32233c75"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="c45cdeae-9337-46b7-9835-de29481f13ef"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Tambak]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="148" y="19" width="79" height="15" uuid="f1f31437-c763-4378-b4d6-cd5d8bcbd638"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Biaya Ikan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="19" width="79" height="15" uuid="6e4e9900-5ec8-4e72-b41d-dfaeb2ffcfbb"/>
+				<text><![CDATA[Biaya Panen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="438" y="19" width="79" height="15" uuid="88dbf583-c7e5-429e-a120-49b009e388ac"/>
+				<text><![CDATA[Biaya Lain]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="c6ff718d-0bb2-4335-8c4d-43d3cce95743"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="f5149d6b-66d2-4dc1-9af5-6a3167a2fb7e"/>
+				<textFieldExpression><![CDATA[$F{tambak_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="148" y="0" width="79" height="15" uuid="92f97aa0-956c-4e1a-bf82-02e77f1b1685"/>
+				<textFieldExpression><![CDATA[$F{pengeluaran_biaya_ikan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="c218ea53-80ae-4c9d-9dfa-d5c8c0ece4b2"/>
+				<textFieldExpression><![CDATA[$F{pengeluaran_biaya_panen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="33" width="79" height="15" uuid="9a4e162e-f7c0-4f32-ae12-61bed6e217b8"/>
+				<textFieldExpression><![CDATA[$F{pengeluaran_created_at}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="0" y="16" width="79" height="15" uuid="133a718f-2409-4309-b40e-70bac4c37d50"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="148" y="17" width="79" height="15" uuid="84138775-aaaa-4c0e-8797-7038677c5341"/>
+				<text><![CDATA[Ket]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="0" y="31" width="79" height="15" uuid="129e5a10-83e7-498a-b7a6-4e9935bcc41a"/>
+				<textFieldExpression><![CDATA[$F{pengeluaran_total_pengeluaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="148" y="32" width="79" height="15" uuid="5e9296dc-94b5-4794-96ac-ef8a562a8113"/>
+				<textFieldExpression><![CDATA[$F{pengeluaran_ket}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="316" y="16" width="79" height="15" uuid="eb4c3d05-b78e-4797-a153-a32840c42556"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="438" y="0" width="79" height="15" uuid="173db09b-a961-47d1-b3e6-497ebc9e787b"/>
+				<textFieldExpression><![CDATA[$F{pengeluaran_biaya_lain}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="c4984877-9bba-4108-9a37-b50e5ecc3c64"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="795fb8a3-a136-46bf-9b2a-a6dc429d8545"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="343" y="0" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="76d29d65-e737-4c02-bc0f-d5d263c27bd0"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="517" y="0" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="03491425-f0c6-4be3-825e-00d742da89e2"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
